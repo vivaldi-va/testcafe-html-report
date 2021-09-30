@@ -6,9 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "vivaldi-va (http://github.com/vivaldi-va)",
   "license": "ISC",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "dependencies": {
+    "@actions/core": "^1.6.0",
     "pug": "^3.0.2"
   },
   "devDependencies": {
