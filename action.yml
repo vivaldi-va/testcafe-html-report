@@ -1,5 +1,5 @@
-name: ''
-description: ''
+name: 'testcafe-html-report'
+description: 'Generate HTML reports using Testcafe json report output'
 inputs:
   json-report:
     description: 'testcafe json report output'
