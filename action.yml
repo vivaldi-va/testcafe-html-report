@@ -1,0 +1,14 @@
+name: ''
+description: ''
+inputs:
+  json-report:
+    description: 'testcafe json report output'
+    required: true
+outputs:
+  html-report:
+    desription: 'compiled html report'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.json-report }}

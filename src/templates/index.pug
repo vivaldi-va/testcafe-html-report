@@ -1,0 +1,16 @@
+extends ../layouts/default.pug
+
+block content
+  h2 Features
+  each fixture in fixtures
+    article
+      h3 #{fixture.name}
+      each test in fixture.tests
+        h4 #{test.name}
+        if test.errs.length > 0
+          each err in test.errs
+            div.test-error
+              img(src=test.screenshotPath, alt=test.name)
+              pre
+                code #{err}
+
