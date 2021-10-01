@@ -8,7 +8,5 @@ outputs:
   html-report:
     desription: 'compiled html report'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.json-report }}
+  using: 'node16'
+  main: 'src/index.js'
