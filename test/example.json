@@ -49,6 +49,16 @@
           "unstable": false,
           "screenshotPath": "./test/screenshots/image.jpg",
           "skipped": false
+        },
+        {
+          "name": "test 2",
+          "meta": {
+            "tags": ""
+          },
+          "errs": [],
+          "durationMs": 27131,
+          "unstable": false,
+          "skipped": false
         }
       ]
     }

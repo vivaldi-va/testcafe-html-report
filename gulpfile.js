@@ -51,7 +51,7 @@ function cleanData(data) {
         ...test,
         // modify screenshot path to point to workspace volume path
         // https://github.community/t/how-can-i-access-the-current-repo-context-and-files-from-a-docker-container-action/17711/2
-        screenshotPath: test.screenshotPath
+        screenshotPath: test.screenshotPath && test.screenshotPath
           .replace(/\/home\/runner\/work\/(?:\w|-)+\/(?:\w|-)+/, '/github/workplace'),
       }))
     }))
@@ -91,8 +91,9 @@ function watch(cb) {
     watch: false,
   });
 
-  gulp.watch(path.join(paths.src, '**/*.{pug,json}'), series(
+  gulp.watch(path.join(paths.src, '**/*.{pug,json,css}'), series(
     compilePug,
+    copyStyles,
     reload,
   ));
 
