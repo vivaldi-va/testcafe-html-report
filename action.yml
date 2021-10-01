@@ -1,11 +1,11 @@
 name: 'testcafe-html-report'
 description: 'Generate HTML reports using Testcafe json report output'
 inputs:
-  json-report:
+  json_report:
     description: 'testcafe json report output'
     required: true
 outputs:
-  html-report:
+  html_report:
     description: 'compiled html report'
 runs:
   using: 'node12'
