@@ -1,0 +1,37 @@
+name: Build report
+on:
+  push:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  build:
+    name: Build test report
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+            **/node_modules
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+
+      - name: Build HTML report
+        uses: vivaldi-va/testcafe-html-report@master
+        with:
+          json_report: test/example.json
+
+      - name: Saves artifacts of failed test
+        uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: build

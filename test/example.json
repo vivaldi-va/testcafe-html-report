@@ -1,0 +1,57 @@
+{
+  "startTime": "2021-09-30T10:26:29.420Z",
+  "endTime": "2021-09-30T10:27:24.428Z",
+  "userAgents": [
+    "Chrome 95.0.4638.17 / Linux 0.0"
+  ],
+  "passed": 0,
+  "total": 2,
+  "skipped": 0,
+  "fixtures": [
+    {
+      "name": "Feature 1",
+      "path": "test1.feature",
+      "meta": {
+        "tags": ""
+      },
+      "tests": [
+        {
+          "name": "Scenario: Take control",
+          "meta": {
+            "tags": ""
+          },
+          "errs": [
+            "error"
+          ],
+          "durationMs": 27843,
+          "unstable": false,
+          "screenshotPath": "/test/screenshots/1.png",
+          "skipped": false
+        }
+      ]
+    },
+    {
+      "name": "Feature 2",
+      "path": "test2.feature",
+      "meta": {
+        "tags": ""
+      },
+      "tests": [
+        {
+          "name": "test 1",
+          "meta": {
+            "tags": ""
+          },
+          "errs": [
+            "error"
+          ],
+          "durationMs": 27131,
+          "unstable": false,
+          "screenshotPath": "/test/screenshots/2.png",
+          "skipped": false
+        }
+      ]
+    }
+  ],
+  "warnings": []
+}
