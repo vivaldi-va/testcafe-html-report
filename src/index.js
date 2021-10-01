@@ -22,7 +22,6 @@ function getScreenshotPaths(report) {
 
 async function copyScreenshots(report) {
   const paths = getScreenshotPaths(report);
-  console.log({ paths })
   return new Promise((resolve, reject) => {
     copy([...paths, 'build'], (err) => {
       if (err) {
