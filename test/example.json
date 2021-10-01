@@ -21,11 +21,11 @@
             "tags": ""
           },
           "errs": [
-            "error"
+            "Error\n\tat foo:123"
           ],
           "durationMs": 27843,
           "unstable": false,
-          "screenshotPath": "/test/screenshots/1.png",
+          "screenshotPath": "./test/screenshots/image.jpg",
           "skipped": false
         }
       ]
@@ -43,11 +43,11 @@
             "tags": ""
           },
           "errs": [
-            "error"
+            "Error\n\tat foo:123"
           ],
           "durationMs": 27131,
           "unstable": false,
-          "screenshotPath": "/test/screenshots/2.png",
+          "screenshotPath": "./test/screenshots/image.jpg",
           "skipped": false
         }
       ]

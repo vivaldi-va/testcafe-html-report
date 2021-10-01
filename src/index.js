@@ -1,4 +1,5 @@
 const fs = require('fs');
+const copy = require('copyfiles');
 const pug = require('pug');
 const { getInput } = require('@actions/core');
 
@@ -6,6 +7,32 @@ if (!fs.existsSync('build')) {
   fs.mkdirSync('build');
 }
 
+function getScreenshotPaths(report) {
+  let paths = [];
+  report.fixtures.forEach((fixture) => {
+    fixture.tests.forEach((test) => {
+      if (test.screenshotPath) {
+        paths.push(test.screenshotPath);
+      }
+    });
+  });
+
+  return paths;
+}
+
+async function copyScreenshots(report) {
+  const paths = getScreenshotPaths(report);
+  console.log({ paths })
+  return new Promise((resolve, reject) => {
+    copy([...paths, 'build'], (err) => {
+      if (err) {
+        return reject(err);
+      }
+
+      return resolve();
+    });
+  });
+}
 async function copyAssets() {
   return new Promise((resolve, reject) => {
     fs.copyFile('src/styles.css', 'build/styles.css', (err) => {
@@ -32,6 +59,7 @@ async function run() {
   writeStream.end();
 
   await copyAssets();
+  await copyScreenshots(jsonReport);
 }
 
 try {

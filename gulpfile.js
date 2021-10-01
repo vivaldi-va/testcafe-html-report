@@ -58,6 +58,16 @@ function cleanData(data) {
   }
 }
 
+function copyImages() {
+  return gulp.src('test/**/*.{jpg,png}')
+    .pipe(gulp.dest(paths.tmp));
+}
+
+function copyStyles() {
+  return gulp.src(path.join(paths.src, '**/*.css'))
+    .pipe(gulp.dest(paths.tmp));
+}
+
 function compilePug() {
   let dataPath = argv.file || paths.data;
   const data = fs.readFileSync(dataPath);
@@ -93,6 +103,8 @@ function watch(cb) {
 
 gulp.task('watch', series(
   cleanTmp,
+  copyImages,
+  copyStyles,
   compilePug,
   watch,
 ));
