@@ -4,6 +4,26 @@ html
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Test results
+    link(rel="preconnect", href="https://fonts.googleapis.com")
+    link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap", rel="stylesheet")
     link(href='/styles.css', rel="stylesheet")
   body
     block content
+  script.
+    (function() {
+      const headings = document.querySelectorAll('.collapse')
+
+      Array.prototype.forEach.call(headings, heading => {
+        const btn = heading.querySelector('button')
+        const target = heading.nextElementSibling
+
+        btn.onclick = () => {
+          const expanded = btn.getAttribute('aria-expanded') === 'true' || false
+          console.log({ expanded })
+
+          btn.setAttribute('aria-expanded', !expanded)
+          target.hidden = expanded
+        }
+      })
+    })()
