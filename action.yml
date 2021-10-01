@@ -9,4 +9,4 @@ outputs:
     description: 'compiled html report'
 runs:
   using: 'node12'
-  main: 'src/index.js'
+  main: 'dist/index.js'

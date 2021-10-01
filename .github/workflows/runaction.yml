@@ -30,7 +30,7 @@ jobs:
         with:
           json_report: test/example.json
 
-      - name: Saves artifacts of failed test
+      - name: Saves report output
         uses: actions/upload-artifact@v2
         with:
           name: report
