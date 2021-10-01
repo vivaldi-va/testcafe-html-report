@@ -6,7 +6,7 @@ inputs:
     required: true
 outputs:
   html-report:
-    desription: 'compiled html report'
+    description: 'compiled html report'
 runs:
-  using: 'node16'
+  using: 'node12'
   main: 'src/index.js'

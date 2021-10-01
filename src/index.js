@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { copyFile } = require('fs/promises');
 const pug = require('pug');
 const { getInput } = require('@actions/core');
 
@@ -8,7 +7,15 @@ if (!fs.existsSync('build')) {
 }
 
 async function copyAssets() {
-  return copyFile('src/styles.css', 'build/styles.css');
+  return new Promise((resolve, reject) => {
+    fs.copyFile('src/styles.css', 'build/styles.css', (err) => {
+      if (err) {
+        return reject(err);
+      }
+
+      return resolve();
+    });
+  });
 }
 
 async function run() {
