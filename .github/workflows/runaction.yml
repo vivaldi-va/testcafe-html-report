@@ -28,8 +28,9 @@ jobs:
         with:
           json_report: test/example.json
 
-      - name: Saves report output
-        uses: actions/upload-artifact@v2
+      - name: deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          name: report
-          path: build
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.
+          target-folder: example2
