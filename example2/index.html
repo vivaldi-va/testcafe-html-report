@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test results</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <h2>Features</h2>
+    <article>
+      <h3 class="collapse">
+        <button type="button" aria-expanded="true">Feature 1</button>
+      </h3>
+      <div>
+        <h4 class="collapse">
+          <button type="button" aria-expanded="true">Scenario: Take control</button>
+        </h4>
+        <div>
+          <div class="test-error"><img src="./test/screenshots/image.jpg" alt="Scenario: Take control">
+            <pre><code>Error
+	at foo:123</code></pre>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article>
+      <h3 class="collapse">
+        <button type="button" aria-expanded="true">Feature 2</button>
+      </h3>
+      <div>
+        <h4 class="collapse">
+          <button type="button" aria-expanded="true">test 1</button>
+        </h4>
+        <div>
+          <div class="test-error"><img src="./test/screenshots/image.jpg" alt="test 1">
+            <pre><code>Error
+	at foo:123</code></pre>
+          </div>
+        </div>
+        <h4 class="collapse">
+          <button type="button" aria-expanded="true">test 2</button>
+        </h4>
+        <div hidden>
+        </div>
+      </div>
+    </article>
+  </body>
+  <script>
+    (function() {
+      const headings = document.querySelectorAll('.collapse')
+    
+      Array.prototype.forEach.call(headings, heading => {
+        const btn = heading.querySelector('button')
+        const target = heading.nextElementSibling
+    
+        btn.onclick = () => {
+          const expanded = btn.getAttribute('aria-expanded') === 'true' || false
+          console.log({ expanded })
+    
+          btn.setAttribute('aria-expanded', !expanded)
+          target.hidden = expanded
+        }
+      })
+    })()
+  </script>
+</html>
