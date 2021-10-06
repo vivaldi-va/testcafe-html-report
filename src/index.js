@@ -1,9 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const copy = require('copyfiles');
 const pug = require('pug');
 const { getInput } = require('@actions/core');
-const { parseData } = require('./utils');
+const { parseData, copyFile } = require('./utils');
 
 const root = path.resolve(__dirname, '..');
 const paths = {
@@ -31,16 +30,13 @@ function getScreenshotPaths(report) {
 }
 
 async function copyScreenshots(report) {
-  const paths = getScreenshotPaths(report);
-  return new Promise((resolve, reject) => {
-    copy([...paths, paths.build], (err) => {
-      if (err) {
-        return reject(err);
-      }
+  const screenshotPaths = getScreenshotPaths(report);
 
-      return resolve();
-    });
-  });
+  return Promise.all(screenshotPaths.map((screenshotPath) => {
+    const workspace = process.env.GITHUB_WORKSPACE;
+    const dest = screenshotPath.replace(workspace, '');
+    return copyFile(screenshotPath, path.join(paths.build, dest));
+  }));
 }
 async function copyAssets() {
   return new Promise((resolve, reject) => {

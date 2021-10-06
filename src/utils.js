@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const humanizeDuration = require('humanize-duration');
 
 module.exports.parseData = function parseData(data) {
@@ -17,4 +19,22 @@ module.exports.parseData = function parseData(data) {
       }))
     }))
   }
+}
+
+module.exports.copyFile = function copyFile(src, dest) {
+  // ensure destination directory exists
+  const destPath = path.dirname(dest);
+  if (!fs.existsSync(destPath)) {
+    fs.mkdirSync(destPath, { recursive: true });
+  }
+
+  return new Promise((resolve, reject) => {
+    fs.copyFileSync(src, dest, (err) => {
+      if (err) {
+        return reject(err);
+      }
+
+      return resolve(dest);
+    });
+  });
 }
