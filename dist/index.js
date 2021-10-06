@@ -58572,13 +58572,20 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const fs = __nccwpck_require__(5747);
+const path = __nccwpck_require__(5622);
 const copy = __nccwpck_require__(8744);
 const pug = __nccwpck_require__(316);
 const { getInput } = __nccwpck_require__(2186);
 const { parseData } = __nccwpck_require__(1608);
 
-if (!fs.existsSync('build')) {
-  fs.mkdirSync('build');
+const root = path.resolve(__dirname, '..');
+const paths = {
+  src: path.resolve(__dirname, '../', 'src'),
+  build: path.join(__dirname, '../', 'build'),
+};
+
+if (!fs.existsSync(paths.build)) {
+  fs.mkdirSync(paths.build);
 }
 
 function getScreenshotPaths(report) {
@@ -58608,7 +58615,7 @@ async function copyScreenshots(report) {
 }
 async function copyAssets() {
   return new Promise((resolve, reject) => {
-    fs.copyFile('src/styles.css', 'build/styles.css', (err) => {
+    fs.copyFile(path.join(paths.src, 'styles.css'), path.join(paths.build, 'styles.css'), (err) => {
       if (err) {
         return reject(err);
       }
@@ -58619,8 +58626,8 @@ async function copyAssets() {
 }
 
 async function run() {
-  const writeStream = fs.createWriteStream('build/index.html');
-  const templatePath = 'src/templates/index.pug';
+  const writeStream = fs.createWriteStream(path.join(paths.build, 'index.html'));
+  const templatePath = path.join(paths.src, 'templates/index.pug');
 
   const jsonPath = getInput('json_report');
   const jsonReport = JSON.parse(fs.readFileSync(jsonPath));

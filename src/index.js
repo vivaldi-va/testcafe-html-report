@@ -1,11 +1,18 @@
 const fs = require('fs');
+const path = require('path');
 const copy = require('copyfiles');
 const pug = require('pug');
 const { getInput } = require('@actions/core');
 const { parseData } = require('./utils');
 
-if (!fs.existsSync('build')) {
-  fs.mkdirSync('build');
+const root = path.resolve(__dirname, '..');
+const paths = {
+  src: path.resolve(__dirname, '../', 'src'),
+  build: path.join(__dirname, '../', 'build'),
+};
+
+if (!fs.existsSync(paths.build)) {
+  fs.mkdirSync(paths.build);
 }
 
 function getScreenshotPaths(report) {
@@ -35,7 +42,7 @@ async function copyScreenshots(report) {
 }
 async function copyAssets() {
   return new Promise((resolve, reject) => {
-    fs.copyFile('src/styles.css', 'build/styles.css', (err) => {
+    fs.copyFile(path.join(paths.src, 'styles.css'), path.join(paths.build, 'styles.css'), (err) => {
       if (err) {
         return reject(err);
       }
@@ -46,8 +53,8 @@ async function copyAssets() {
 }
 
 async function run() {
-  const writeStream = fs.createWriteStream('build/index.html');
-  const templatePath = 'src/templates/index.pug';
+  const writeStream = fs.createWriteStream(path.join(paths.build, 'index.html'));
+  const templatePath = path.join(paths.src, 'templates/index.pug');
 
   const jsonPath = getInput('json_report');
   const jsonReport = JSON.parse(fs.readFileSync(jsonPath));
