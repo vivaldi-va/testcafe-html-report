@@ -1,0 +1,20 @@
+article.fixture
+  h3.collapse
+    button(type="button", aria-expanded="true")
+      span.collapse-icon +
+      span  #{fixture.name}
+  div.fixture-tests
+    each test in fixture.tests
+      h4.collapse
+        button(type="button", aria-expanded="true")
+          span.collapse-icon +
+          span  #{test.name}
+      div(hidden=test.errs.length > 0 ? false : true)
+        if test.errs.length > 0
+          each err in test.errs
+            div.test-error
+              pre.test-error-stack
+                code #{err}
+
+              a(href=test.screenshotPath).test-screenshot-container
+                img.test-screenshot(src=test.screenshotPath, alt=test.name)

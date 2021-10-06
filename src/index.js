@@ -2,6 +2,7 @@ const fs = require('fs');
 const copy = require('copyfiles');
 const pug = require('pug');
 const { getInput } = require('@actions/core');
+const { parseData } = require('./utils');
 
 if (!fs.existsSync('build')) {
   fs.mkdirSync('build');
@@ -53,7 +54,7 @@ async function run() {
 
   const compileFunction = pug.compileFile(templatePath, { pretty: true });
 
-  const compiledTemplate = compileFunction(jsonReport);
+  const compiledTemplate = compileFunction(parseData(jsonReport));
   writeStream.write(compiledTemplate);
   writeStream.end();
 

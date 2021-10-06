@@ -6,6 +6,7 @@ const log = require('fancy-log');
 const gulp = require('gulp');
 const pug = require('gulp-pug');
 const browserSync = require('browser-sync').create();
+const { parseData } = require('./src/utils');
 
 const paths = {
   src: 'src',
@@ -59,7 +60,7 @@ function cleanData(data) {
 }
 
 function copyImages() {
-  return gulp.src('test/**/*.{jpg,png}')
+  return gulp.src('test/**/*.{jpg,png}', { base: '' })
     .pipe(gulp.dest(paths.tmp));
 }
 
@@ -74,7 +75,7 @@ function compilePug() {
   return gulp.src(path.join(paths.src, 'templates/**/*.pug'))
     .pipe(pug({
       pretty: true,
-      data: cleanData(JSON.parse(data)),
+      data: parseData(JSON.parse(data)),
     }))
     .pipe(gulp.dest(paths.tmp));
 }

@@ -9,21 +9,28 @@ html
     link(href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap", rel="stylesheet")
     link(href='/styles.css', rel="stylesheet")
   body
-    block content
+    main
+      block content
   script.
     (function() {
-      const headings = document.querySelectorAll('.collapse')
+      window.addEventListener('DOMContentLoaded', (event) => {
+        const headings = document.querySelectorAll('.collapse')
 
-      Array.prototype.forEach.call(headings, heading => {
-        const btn = heading.querySelector('button')
-        const target = heading.nextElementSibling
+        Array.prototype.forEach.call(headings, heading => {
+          const btn = heading.querySelector('button')
+          const target = heading.nextElementSibling
+          const icon = heading.querySelector('.collapse-icon');
 
-        btn.onclick = () => {
-          const expanded = btn.getAttribute('aria-expanded') === 'true' || false
-          console.log({ expanded })
+          target.hidden = btn.getAttribute('aria-expanded') === 'false';
 
-          btn.setAttribute('aria-expanded', !expanded)
-          target.hidden = expanded
-        }
-      })
+          btn.onclick = () => {
+            const expanded = btn.getAttribute('aria-expanded') === 'true' || false
+            btn.setAttribute('aria-expanded', !expanded)
+            if (icon) {
+              icon.innerHTML = !expanded ? '&minus;' : '+';
+            }
+            target.hidden = expanded
+          }
+        })
+      });
     })()

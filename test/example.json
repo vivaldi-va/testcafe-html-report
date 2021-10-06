@@ -43,7 +43,7 @@
             "tags": ""
           },
           "errs": [
-            "Error\n\tat foo:123"
+            "Error\n\tat foo:123\n\t(/home/runner/work/foo-bar-baz/foo-bar-baz/node_modules/gherkin-testcafe/src/compiler.js:263:21)\n\tat <anonymous>"
           ],
           "durationMs": 27131,
           "unstable": false,

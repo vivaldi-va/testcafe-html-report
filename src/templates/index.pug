@@ -1,20 +1,12 @@
 extends ../layouts/default.pug
 
+
 block content
-  h2 Features
-  each fixture in fixtures
-    article
-      h3.collapse
-        button(type="button", aria-expanded="true") #{fixture.name}
-      div
-        each test in fixture.tests
-          h4.collapse
-            button(type="button", aria-expanded="true") #{test.name}
-          div(hidden=test.errs.length > 0 ? false : true)
-            if test.errs.length > 0
-              each err in test.errs
-                div.test-error
-                  img(src=test.screenshotPath, alt=test.name)
-                  pre
-                    code #{err}
+  section
+    .wrapper
+      h2 Test results
+      include ../includes/results_header.pug
+      h2 Features
+      each fixture in fixtures
+        include ../includes/fixture.pug
 
