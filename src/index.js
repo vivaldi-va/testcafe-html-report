@@ -8,11 +8,13 @@ const { parseData } = require('./utils');
 const root = path.resolve(__dirname, '..');
 const paths = {
   src: path.resolve(__dirname, '../', 'src'),
-  build: path.join(__dirname, '../', 'build'),
+  build: process.env.GITHUB_WORKSPACE
+    ? path.join(process.env.GITHUB_WORKSPACE, 'build')
+    : path.join(__dirname, '../', 'build'),
 };
 
 if (!fs.existsSync(paths.build)) {
-  fs.mkdirSync(paths.build);
+  fs.mkdirSync(paths.build, { recursive: true });
 }
 
 function getScreenshotPaths(report) {
@@ -31,7 +33,7 @@ function getScreenshotPaths(report) {
 async function copyScreenshots(report) {
   const paths = getScreenshotPaths(report);
   return new Promise((resolve, reject) => {
-    copy([...paths, 'build'], (err) => {
+    copy([...paths, paths.build], (err) => {
       if (err) {
         return reject(err);
       }
