@@ -1,0 +1,275 @@
+* {
+  /* Dark mode */
+
+  /* Dark Background */
+  --gb-dm-bg0: #282828;
+  --gb-dm-bg0-hard: #1d2021;
+  --gb-dm-bg0-soft: #32302f;
+  --gb-dm-bg1: #3c3836;
+  --gb-dm-bg2: #504945;
+  --gb-dm-bg3: #665c54;
+  --gb-dm-bg4: #7c6f64;
+
+  /*  Dark Foreground */
+  --gb-dm-fg0: #fbf1c7;
+  --gb-dm-fg1: #ebdbb2;
+  --gb-dm-fg2: #d5c4a1;
+  --gb-dm-fg3: #bdae93;
+  --gb-dm-fg4: #a89984;
+
+  /*  Dark Colors */
+  --gb-dm-dark-red: #cc241d;
+  --gb-dm-dark-green: #98971a;
+  --gb-dm-dark-yellow: #d79921;
+  --gb-dm-dark-blue: #458588;
+  --gb-dm-dark-purple: #b16286;
+  --gb-dm-dark-aqua: #689d6a;
+  --gb-dm-dark-orange: #d65d0e;
+  --gb-dm-dark-gray: #928374;
+
+  --gb-dm-light-red: #fb4934;
+  --gb-dm-light-green: #b8bb26;
+  --gb-dm-light-yellow: #fabd2f;
+  --gb-dm-light-blue: #83a598;
+  --gb-dm-light-purple: #d3869b;
+  --gb-dm-light-aqua: #8ec07c;
+  --gb-dm-light-orange: #f38019;
+  --gb-dm-light-gray: #a89984;
+
+  /*  ---------------------------------------------------------------------------- */
+  /*  Light Mode */
+  /*  ---------------------------------------------------------------------------- */
+
+  /*  Light Background */
+  --gb-lm-bg0: #fbf1c7;
+  --gb-lm-bg0-hard: #f9f5d7;
+  --gb-lm-bg0-soft: #f2e5bc;
+  --gb-lm-bg1: #ebdbb2;
+  --gb-lm-bg2: #d5c4a1;
+  --gb-lm-bg3: #bdae93;
+  --gb-lm-bg4: #a89984;
+
+  /*  Light Foreground */
+  --gb-lm-fg0: #282828;
+  --gb-lm-fg1: #3c3836;
+  --gb-lm-fg2: #504945;
+  --gb-lm-fg3: #665c54;
+  --gb-lm-fg4: #7c6f64;
+
+  /*  Light Colors */
+  --gb-lm-dark-red: #cc241d;
+  --gb-lm-dark-green: #98971a;
+  --gb-lm-dark-yellow: #d79921;
+  --gb-lm-dark-blue: #458588;
+  --gb-lm-dark-purple: #b16286;
+  --gb-lm-dark-aqua: #689d6a;
+  --gb-lm-dark-orange: #d65d0e;
+  --gb-lm-dark-gray: #928374;
+
+  --gb-lm-light-red: #9d0006;
+  --gb-lm-light-green: #79740e;
+  --gb-lm-light-yellow: #b57614;
+  --gb-lm-light-blue: #076678;
+  --gb-lm-light-purple: #8f3f71;
+  --gb-lm-light-aqua: #427b58;
+  --gb-lm-light-orange: #af3a03;
+  --gb-lm-light-gray: #7c6f64;
+
+
+  --bg0: var(--gb-lm-bg0);
+  --bg0-hard: var(--gb-lm-bg0-hard);
+  --bg0-soft: var(--gb-lm-bg0-soft);
+  --bg1: var(--gb-lm-bg1);
+  --bg2: var(--gb-lm-bg2);
+  --bg3: var(--gb-lm-bg3);
+  --bg4: var(--gb-lm-bg4);
+
+  --fg0: var(--gb-lm-fg0);
+  --fg1: var(--gb-lm-fg1);
+  --fg2: var(--gb-lm-fg2);
+  --fg3: var(--gb-lm-fg3);
+  --fg4: var(--gb-lm-fg4);
+
+  --dark-red: var(--gb-lm-dark-red);
+  --dark-green: var(--gb-lm-dark-green);
+  --dark-yellow: var(--gb-lm-dark-yellow);
+  --dark-blue: var(--gb-lm-dark-blue);
+  --dark-purple: var(--gb-lm-dark-purple);
+  --dark-aqua: var(--gb-lm-dark-aqua);
+  --dark-orange: var(--gb-lm-dark-orange);
+  --dark-gray: var(--gb-lm-dark-gray);
+
+  --light-red: var(--gb-lm-light-red);
+  --light-green: var(--gb-lm-light-green);
+  --light-yellow: var(--gb-lm-light-yellow);
+  --light-blue: var(--gb-lm-light-blue);
+  --light-purple: var(--gb-lm-light-purple);
+  --light-aqua: var(--gb-lm-light-aqua);
+  --light-orange: var(--gb-lm-light-orange);
+  --light-gray: var(--gb-lm-light-gray);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  * {
+    --bg0: var(--gb-dm-bg0);
+    --bg0-hard: var(--gb-dm-bg0-hard);
+    --bg0-soft: var(--gb-dm-bg0-soft);
+    --bg1: var(--gb-dm-bg1);
+    --bg2: var(--gb-dm-bg2);
+    --bg3: var(--gb-dm-bg3);
+    --bg4: var(--gb-dm-bg4);
+
+    --fg0: var(--gb-dm-fg0);
+    --fg1: var(--gb-dm-fg1);
+    --fg2: var(--gb-dm-fg2);
+    --fg3: var(--gb-dm-fg3);
+    --fg4: var(--gb-dm-fg4);
+
+    --dark-red: var(--gb-dm-dark-red);
+    --dark-green: var(--gb-dm-dark-green);
+    --dark-yellow: var(--gb-dm-dark-yellow);
+    --dark-blue: var(--gb-dm-dark-blue);
+    --dark-purple: var(--gb-dm-dark-purple);
+    --dark-aqua: var(--gb-dm-dark-aqua);
+    --dark-orange: var(--gb-dm-dark-orange);
+    --dark-gray: var(--gb-dm-dark-gray);
+
+    --light-red: var(--gb-dm-light-red);
+    --light-green: var(--gb-dm-light-green);
+    --light-yellow: var(--gb-dm-light-yellow);
+    --light-blue: var(--gb-dm-light-blue);
+    --light-purple: var(--gb-dm-light-purple);
+    --light-aqua: var(--gb-dm-light-aqua);
+    --light-orange: var(--gb-dm-light-orange);
+    --light-gray: var(--gb-dm-light-gray);
+  }
+}
+
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.6rem;
+  background-color: var(--bg0);
+  color: var(--fg0);
+}
+
+.wrapper {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+.collapse > button {
+  all: inherit;
+  cursor: pointer;
+}
+
+.breakdown__Table {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.breakdown__TableRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border: 1px solid var(--fg3);
+}
+
+.breakdown__TableRow + .breakdown__TableRow {
+  border-top: none;
+}
+
+@media screen and (min-width: 762px) {
+  .breakdown__TableRow + .breakdown__TableRow {
+    border-top: 1px solid var(--fg3);
+    border-left: none;
+  }
+}
+
+.breakdown__TableRow > div {
+  width: 50%;
+}
+
+.breakdown__TableHead {
+  font-weight: 600;
+  color: var(--gb-lm-fg0);
+}
+
+.breakdown__TableCell,
+.breakdown__TableHead {
+  box-sizing: border-box;
+  padding: 0.5em 1em;
+}
+.breakdown__TableHead-passed {
+  background-color: var(--dark-green);
+}
+
+.breakdown__TableHead-failed {
+  background-color: var(--dark-red);
+  color: var(--gb-lm-bg0);
+}
+
+.breakdown__TableHead-skipped {
+  background-color: var(--dark-yellow);
+}
+
+@media screen and (min-width: 762px) {
+  .breakdown__Table {
+    grid-template-rows: auto;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .breakdown__TableRow {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .breakdown__TableRow > div {
+    width: 100%;
+  }
+}
+
+.fixture-tests {
+  margin-left: 1em;
+}
+
+.test-error {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1em;
+}
+
+@media screen and (min-width: 762px) {
+  .test-error {
+    flex-direction: row;
+  }
+}
+
+.test-error-stack {
+  flex-grow: 1;
+  margin: 0;
+  padding: 1em 0.5em;
+  overflow-x: auto;
+  overflow-y: auto;
+  tab-size: 2;
+
+  border: 1px solid var(--bg3);
+  background-color: var(--bg1);
+}
+
+.test-screenshot-container {
+  max-width: 300px;
+  flex-basis: 300px;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.test-screenshot {
+  width: 100%;
+  height: auto;
+}
