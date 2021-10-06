@@ -74,6 +74,75 @@
   --gb-lm-light-aqua: #427b58;
   --gb-lm-light-orange: #af3a03;
   --gb-lm-light-gray: #7c6f64;
+
+
+  --bg0: var(--gb-lm-bg0);
+  --bg0-hard: var(--gb-lm-bg0-hard);
+  --bg0-soft: var(--gb-lm-bg0-soft);
+  --bg1: var(--gb-lm-bg1);
+  --bg2: var(--gb-lm-bg2);
+  --bg3: var(--gb-lm-bg3);
+  --bg4: var(--gb-lm-bg4);
+
+  --fg0: var(--gb-lm-fg0);
+  --fg1: var(--gb-lm-fg1);
+  --fg2: var(--gb-lm-fg2);
+  --fg3: var(--gb-lm-fg3);
+  --fg4: var(--gb-lm-fg4);
+
+  --dark-red: var(--gb-lm-dark-red);
+  --dark-green: var(--gb-lm-dark-green);
+  --dark-yellow: var(--gb-lm-dark-yellow);
+  --dark-blue: var(--gb-lm-dark-blue);
+  --dark-purple: var(--gb-lm-dark-purple);
+  --dark-aqua: var(--gb-lm-dark-aqua);
+  --dark-orange: var(--gb-lm-dark-orange);
+  --dark-gray: var(--gb-lm-dark-gray);
+
+  --light-red: var(--gb-lm-light-red);
+  --light-green: var(--gb-lm-light-green);
+  --light-yellow: var(--gb-lm-light-yellow);
+  --light-blue: var(--gb-lm-light-blue);
+  --light-purple: var(--gb-lm-light-purple);
+  --light-aqua: var(--gb-lm-light-aqua);
+  --light-orange: var(--gb-lm-light-orange);
+  --light-gray: var(--gb-lm-light-gray);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  * {
+    --bg0: var(--gb-dm-bg0);
+    --bg0-hard: var(--gb-dm-bg0-hard);
+    --bg0-soft: var(--gb-dm-bg0-soft);
+    --bg1: var(--gb-dm-bg1);
+    --bg2: var(--gb-dm-bg2);
+    --bg3: var(--gb-dm-bg3);
+    --bg4: var(--gb-dm-bg4);
+
+    --fg0: var(--gb-dm-fg0);
+    --fg1: var(--gb-dm-fg1);
+    --fg2: var(--gb-dm-fg2);
+    --fg3: var(--gb-dm-fg3);
+    --fg4: var(--gb-dm-fg4);
+
+    --dark-red: var(--gb-dm-dark-red);
+    --dark-green: var(--gb-dm-dark-green);
+    --dark-yellow: var(--gb-dm-dark-yellow);
+    --dark-blue: var(--gb-dm-dark-blue);
+    --dark-purple: var(--gb-dm-dark-purple);
+    --dark-aqua: var(--gb-dm-dark-aqua);
+    --dark-orange: var(--gb-dm-dark-orange);
+    --dark-gray: var(--gb-dm-dark-gray);
+
+    --light-red: var(--gb-dm-light-red);
+    --light-green: var(--gb-dm-light-green);
+    --light-yellow: var(--gb-dm-light-yellow);
+    --light-blue: var(--gb-dm-light-blue);
+    --light-purple: var(--gb-dm-light-purple);
+    --light-aqua: var(--gb-dm-light-aqua);
+    --light-orange: var(--gb-dm-light-orange);
+    --light-gray: var(--gb-dm-light-gray);
+  }
 }
 
 
@@ -84,18 +153,123 @@ html {
 body {
   font-family: 'Work Sans', sans-serif;
   font-size: 1.6rem;
-  background-color: var(--gb-lm-bg0);
-  color: var(--gb-lm-fg0);
+  background-color: var(--bg0);
+  color: var(--fg0);
 }
 
-@media screen and (prefers-color-scheme: dark) {
-  body {
-    background-color: var(--gb-dm-bg0);
-    color: var(--gb-dm-fg0);
-  }
+.wrapper {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 1em;
 }
 
 .collapse > button {
   all: inherit;
   cursor: pointer;
+}
+
+.breakdown__Table {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.breakdown__TableRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border: 1px solid var(--fg3);
+}
+
+.breakdown__TableRow + .breakdown__TableRow {
+  border-top: none;
+}
+
+@media screen and (min-width: 762px) {
+  .breakdown__TableRow + .breakdown__TableRow {
+    border-top: 1px solid var(--fg3);
+    border-left: none;
+  }
+}
+
+.breakdown__TableRow > div {
+  width: 50%;
+}
+
+.breakdown__TableHead {
+  font-weight: 600;
+  color: var(--gb-lm-fg0);
+}
+
+.breakdown__TableCell,
+.breakdown__TableHead {
+  box-sizing: border-box;
+  padding: 0.5em 1em;
+}
+.breakdown__TableHead-passed {
+  background-color: var(--dark-green);
+}
+
+.breakdown__TableHead-failed {
+  background-color: var(--dark-red);
+  color: var(--gb-lm-bg0);
+}
+
+.breakdown__TableHead-skipped {
+  background-color: var(--dark-yellow);
+}
+
+@media screen and (min-width: 762px) {
+  .breakdown__Table {
+    grid-template-rows: auto;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .breakdown__TableRow {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .breakdown__TableRow > div {
+    width: 100%;
+  }
+}
+
+.fixture-tests {
+  margin-left: 1em;
+}
+
+.test-error {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1em;
+}
+
+@media screen and (min-width: 762px) {
+  .test-error {
+    flex-direction: row;
+  }
+}
+
+.test-error-stack {
+  flex-grow: 1;
+  margin: 0;
+  padding: 1em 0.5em;
+  overflow-x: auto;
+  overflow-y: auto;
+  tab-size: 2;
+
+  border: 1px solid var(--bg3);
+  background-color: var(--bg1);
+}
+
+.test-screenshot-container {
+  max-width: 300px;
+  flex-basis: 300px;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.test-screenshot {
+  width: 100%;
+  height: auto;
 }

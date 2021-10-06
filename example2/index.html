@@ -10,61 +10,97 @@
     <link href="/styles.css" rel="stylesheet">
   </head>
   <body>
-    <h2>Features</h2>
-    <article>
-      <h3 class="collapse">
-        <button type="button" aria-expanded="true">Feature 1</button>
-      </h3>
-      <div>
-        <h4 class="collapse">
-          <button type="button" aria-expanded="true">Scenario: Take control</button>
-        </h4>
-        <div>
-          <div class="test-error"><img src="./test/screenshots/image.jpg" alt="Scenario: Take control">
-            <pre><code>Error
-	at foo:123</code></pre>
-          </div>
+    <main>
+      <section>
+        <div class="wrapper">
+          <h2>Test results</h2>
+          <header><span>Duration 55 seconds</span>
+            <h3>Breakdown</h3>
+            <div class="breakdown__Table">
+              <div class="breakdown__TableRow">
+                <div class="breakdown__TableHead breakdown__TableHead-passed">Passed</div>
+                <div class="breakdown__TableCell">0</div>
+              </div>
+              <div class="breakdown__TableRow">
+                <div class="breakdown__TableHead breakdown__TableHead-failed">Failed</div>
+                <div class="breakdown__TableCell">2</div>
+              </div>
+              <div class="breakdown__TableRow">
+                <div class="breakdown__TableHead breakdown__TableHead-skipped">Skipped</div>
+                <div class="breakdown__TableCell">0</div>
+              </div>
+              <div class="breakdown__TableRow">
+                <div class="breakdown__TableHead">Total</div>
+                <div class="breakdown__TableCell">2</div>
+              </div>
+            </div>
+          </header>
+          <h2>Features</h2>
+          <article class="fixture">
+            <h3 class="collapse">
+              <button type="button" aria-expanded="true"><span class="collapse-icon">+</span><span> Feature 1</span></button>
+            </h3>
+            <div class="fixture-tests">
+              <h4 class="collapse">
+                <button type="button" aria-expanded="true"><span class="collapse-icon">+</span><span> Scenario: Take control</span></button>
+              </h4>
+              <div>
+                <div class="test-error">
+                  <pre class="test-error-stack"><code>Error
+	at foo:123</code></pre><a class="test-screenshot-container" href="./test/screenshots/image.jpg"><img class="test-screenshot" src="./test/screenshots/image.jpg" alt="Scenario: Take control"></a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="fixture">
+            <h3 class="collapse">
+              <button type="button" aria-expanded="true"><span class="collapse-icon">+</span><span> Feature 2</span></button>
+            </h3>
+            <div class="fixture-tests">
+              <h4 class="collapse">
+                <button type="button" aria-expanded="true"><span class="collapse-icon">+</span><span> test 1</span></button>
+              </h4>
+              <div>
+                <div class="test-error">
+                  <pre class="test-error-stack"><code>Error
+	at foo:123
+	(/home/runner/work/foo-bar-baz/foo-bar-baz/node_modules/gherkin-testcafe/src/compiler.js:263:21)
+	at &lt;anonymous&gt;</code></pre><a class="test-screenshot-container" href="./test/screenshots/image.jpg"><img class="test-screenshot" src="./test/screenshots/image.jpg" alt="test 1"></a>
+                </div>
+              </div>
+              <h4 class="collapse">
+                <button type="button" aria-expanded="true"><span class="collapse-icon">+</span><span> test 2</span></button>
+              </h4>
+              <div hidden>
+              </div>
+            </div>
+          </article>
         </div>
-      </div>
-    </article>
-    <article>
-      <h3 class="collapse">
-        <button type="button" aria-expanded="true">Feature 2</button>
-      </h3>
-      <div>
-        <h4 class="collapse">
-          <button type="button" aria-expanded="true">test 1</button>
-        </h4>
-        <div>
-          <div class="test-error"><img src="./test/screenshots/image.jpg" alt="test 1">
-            <pre><code>Error
-	at foo:123</code></pre>
-          </div>
-        </div>
-        <h4 class="collapse">
-          <button type="button" aria-expanded="true">test 2</button>
-        </h4>
-        <div hidden>
-        </div>
-      </div>
-    </article>
+      </section>
+    </main>
   </body>
   <script>
     (function() {
-      const headings = document.querySelectorAll('.collapse')
+      window.addEventListener('DOMContentLoaded', (event) => {
+        const headings = document.querySelectorAll('.collapse')
     
-      Array.prototype.forEach.call(headings, heading => {
-        const btn = heading.querySelector('button')
-        const target = heading.nextElementSibling
+        Array.prototype.forEach.call(headings, heading => {
+          const btn = heading.querySelector('button')
+          const target = heading.nextElementSibling
+          const icon = heading.querySelector('.collapse-icon');
     
-        btn.onclick = () => {
-          const expanded = btn.getAttribute('aria-expanded') === 'true' || false
-          console.log({ expanded })
+          target.hidden = btn.getAttribute('aria-expanded') === 'false';
     
-          btn.setAttribute('aria-expanded', !expanded)
-          target.hidden = expanded
-        }
-      })
+          btn.onclick = () => {
+            const expanded = btn.getAttribute('aria-expanded') === 'true' || false
+            btn.setAttribute('aria-expanded', !expanded)
+            if (icon) {
+              icon.innerHTML = !expanded ? '&minus;' : '+';
+            }
+            target.hidden = expanded
+          }
+        })
+      });
     })()
   </script>
 </html>
