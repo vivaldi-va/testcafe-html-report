@@ -61,6 +61,35 @@
           "skipped": false
         }
       ]
+    },
+    {
+      "name": "Feature 3",
+      "path": "test3.feature",
+      "meta": {
+        "tags": ""
+      },
+      "tests": [
+        {
+          "name": "test 1",
+          "meta": {
+            "tags": ""
+          },
+          "errs": [],
+          "durationMs": 27131,
+          "unstable": false,
+          "skipped": false
+        },
+        {
+          "name": "test 2",
+          "meta": {
+            "tags": ""
+          },
+          "errs": [],
+          "durationMs": 27131,
+          "unstable": false,
+          "skipped": false
+        }
+      ]
     }
   ],
   "warnings": []
