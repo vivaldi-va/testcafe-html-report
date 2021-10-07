@@ -176,6 +176,7 @@ body {
   color: var(--gb-lm-bg0);
   background-color: var(--fg1);
   border-radius: 4px;
+  white-space: nowrap;
 }
 
 .label.error {
@@ -274,6 +275,17 @@ body {
   width: auto;
   flex-grow: 0;
   flex-shrink: 0;
+}
+
+.test-header > button:hover,
+.test-header > button:focus {
+  color: var(--light-blue);
+  text-decoration: underline;
+}
+
+.test-labels {
+  display: inline-flex;
+  gap: 0.5em;
 }
 
 .test-error {
