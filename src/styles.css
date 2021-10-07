@@ -187,68 +187,71 @@ body {
   color: var(--gb-lm-fg0);
 }
 
-.breakdown__Table {
+.breakdown.table {
   display: grid;
   grid-template-rows: repeat(4, 1fr);
 }
 
-.breakdown__TableRow {
+.breakdown.tableRow {
   display: flex;
   flex-direction: row;
   justify-content: center;
   border: 1px solid var(--fg3);
 }
 
-.breakdown__TableRow + .breakdown__TableRow {
+.breakdown.tableRow + .breakdown.tableRow {
   border-top: none;
 }
 
 @media screen and (min-width: 762px) {
-  .breakdown__TableRow + .breakdown__TableRow {
+  .breakdown.tableRow + .breakdown.tableRow {
     border-top: 1px solid var(--fg3);
     border-left: none;
   }
 }
 
-.breakdown__TableRow > div {
+.breakdown.tableRow > div {
   width: 50%;
 }
 
-.breakdown__TableHead {
+.breakdown.tableHead {
   font-weight: 600;
-  color: var(--gb-lm-fg0);
+  color: var(--bg0);
+  background-color: var(--fg1);
 }
 
-.breakdown__TableCell,
-.breakdown__TableHead {
+.breakdown.tableCell,
+.breakdown.tableHead {
   box-sizing: border-box;
   padding: 0.5em 1em;
 }
-.breakdown__TableHead-passed {
+.breakdown.tableHead.passed {
   background-color: var(--dark-green);
+  color: var(--gb-lm-fg0);
 }
 
-.breakdown__TableHead-failed {
+.breakdown.tableHead.failed {
   background-color: var(--dark-red);
   color: var(--gb-lm-bg0);
 }
 
-.breakdown__TableHead-skipped {
+.breakdown.tableHead.skipped {
   background-color: var(--dark-yellow);
+  color: var(--gb-lm-fg0);
 }
 
 @media screen and (min-width: 762px) {
-  .breakdown__Table {
+  .breakdown.table {
     grid-template-rows: auto;
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .breakdown__TableRow {
+  .breakdown.tableRow {
     flex-direction: column;
     justify-content: flex-start;
   }
 
-  .breakdown__TableRow > div {
+  .breakdown.tableRow > div {
     width: 100%;
   }
 }

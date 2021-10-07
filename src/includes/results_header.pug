@@ -1,16 +1,16 @@
 header
   span Duration #{duration}
   h3 Breakdown
-  div.breakdown__Table
-    div.breakdown__TableRow
-      div.breakdown__TableHead.breakdown__TableHead-passed Passed
-      div.breakdown__TableCell #{passed}
-    div.breakdown__TableRow
-      div.breakdown__TableHead.breakdown__TableHead-failed Failed
-      div.breakdown__TableCell #{total - (passed + skipped)}
-    div.breakdown__TableRow
-      div.breakdown__TableHead.breakdown__TableHead-skipped Skipped
-      div.breakdown__TableCell #{skipped}
-    div.breakdown__TableRow
-      div.breakdown__TableHead Total
-      div.breakdown__TableCell #{total}
+  div.breakdown.table
+    div.breakdown.tableRow
+      div.breakdown.tableHead.passed Passed
+      div.breakdown.tableCell #{passed}
+    div.breakdown.tableRow
+      div.breakdown.tableHead.failed Failed
+      div.breakdown.tableCell #{total - (passed + skipped)}
+    div.breakdown.tableRow
+      div.breakdown.tableHead.skipped Skipped
+      div.breakdown.tableCell #{skipped}
+    div.breakdown.tableRow
+      div.breakdown.tableHead Total
+      div.breakdown.tableCell #{total}
