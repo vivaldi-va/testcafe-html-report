@@ -23,6 +23,9 @@ jobs:
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
 
+      - name: Lint
+        run: |
+          npx eslint src/**/*.js gulpfile.js
       - name: Build HTML report
         uses: vivaldi-va/testcafe-html-report@master
         with:

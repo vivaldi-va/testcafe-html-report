@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const del = require('del');
-const argv = require('yargs').argv;
+const { argv } = require('yargs');
 const log = require('fancy-log');
 const gulp = require('gulp');
 const pug = require('gulp-pug');
@@ -32,33 +32,6 @@ async function cleanTmp() {
   }
 }
 
-async function cleanDist() {
-  try {
-    const deletedPaths = await del([paths.dist]);
-    log.info('cleaned paths:');
-    deletedPaths.forEach((p) => log.info(` - ${p}`));
-    return deletedPaths;
-  } catch (err) {
-    return handleError(err);
-  }
-}
-
-function cleanData(data) {
-  return {
-    ...data,
-    fixtures: data.fixtures.map((fixture) => ({
-      ...fixture,
-      tests: fixture.tests.map((test) => ({
-        ...test,
-        // modify screenshot path to point to workspace volume path
-        // https://github.community/t/how-can-i-access-the-current-repo-context-and-files-from-a-docker-container-action/17711/2
-        screenshotPath: test.screenshotPath && test.screenshotPath
-          .replace(/\/home\/runner\/work\/(?:\w|-)+\/(?:\w|-)+/, '/github/workplace'),
-      }))
-    }))
-  }
-}
-
 function copyImages() {
   return gulp.src('test/**/*.{jpg,png}', { base: '' })
     .pipe(gulp.dest(paths.tmp));
@@ -70,7 +43,7 @@ function copyStyles() {
 }
 
 function compilePug() {
-  let dataPath = argv.file || paths.data;
+  const dataPath = argv.file || paths.data;
   const data = fs.readFileSync(dataPath);
   return gulp.src(path.join(paths.src, 'templates/**/*.pug'))
     .pipe(pug({

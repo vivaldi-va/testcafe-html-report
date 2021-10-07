@@ -4,7 +4,6 @@ const pug = require('pug');
 const { getInput } = require('@actions/core');
 const { parseData, copyFile } = require('./utils');
 
-const root = path.resolve(__dirname, '..');
 const paths = {
   src: path.resolve(__dirname, '../', 'src'),
   build: process.env.GITHUB_WORKSPACE
@@ -17,7 +16,7 @@ if (!fs.existsSync(paths.build)) {
 }
 
 function getScreenshotPaths(report) {
-  let paths = [];
+  const screenshotPaths = [];
   report.fixtures.forEach((fixture) => {
     fixture.tests.forEach((test) => {
       if (test.screenshotPath) {
@@ -26,7 +25,7 @@ function getScreenshotPaths(report) {
     });
   });
 
-  return paths;
+  return screenshotPaths;
 }
 
 async function copyScreenshots(report) {
@@ -67,8 +66,4 @@ async function run() {
   await copyScreenshots(jsonReport);
 }
 
-try {
-  run();
-} catch (err) {
-  throw err;
-}
+run();

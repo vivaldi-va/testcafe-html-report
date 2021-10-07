@@ -12,11 +12,11 @@ module.exports.parseData = function parseData(data) {
       ...fixture,
       duration: humanizeDuration(
         fixture.tests
-          .map(t => t.durationMs)
+          .map((t) => t.durationMs)
           .reduce((acc, v) => acc + v, 0),
         { round: true },
       ),
-      hasErrors: fixture.tests.some(t => t.errs.length > 0),
+      hasErrors: fixture.tests.some((t) => t.errs.length > 0),
       tests: fixture.tests.map((test) => ({
         ...test,
         // modify screenshot path to point to workspace volume path
@@ -25,10 +25,10 @@ module.exports.parseData = function parseData(data) {
         screenshotPath: test.screenshotPath && test.screenshotPath
           .replace(workspace, '')
           .replace(/^\//, './'),
-      }))
-    }))
-  }
-}
+      })),
+    })),
+  };
+};
 
 module.exports.copyFile = function copyFile(src, dest) {
   // ensure destination directory exists
@@ -46,4 +46,4 @@ module.exports.copyFile = function copyFile(src, dest) {
       return resolve(dest);
     });
   });
-}
+};

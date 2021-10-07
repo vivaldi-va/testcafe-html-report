@@ -49415,11 +49415,11 @@ module.exports.parseData = function parseData(data) {
       ...fixture,
       duration: humanizeDuration(
         fixture.tests
-          .map(t => t.durationMs)
+          .map((t) => t.durationMs)
           .reduce((acc, v) => acc + v, 0),
         { round: true },
       ),
-      hasErrors: fixture.tests.some(t => t.errs.length > 0),
+      hasErrors: fixture.tests.some((t) => t.errs.length > 0),
       tests: fixture.tests.map((test) => ({
         ...test,
         // modify screenshot path to point to workspace volume path
@@ -49428,10 +49428,10 @@ module.exports.parseData = function parseData(data) {
         screenshotPath: test.screenshotPath && test.screenshotPath
           .replace(workspace, '')
           .replace(/^\//, './'),
-      }))
-    }))
-  }
-}
+      })),
+    })),
+  };
+};
 
 module.exports.copyFile = function copyFile(src, dest) {
   // ensure destination directory exists
@@ -49449,7 +49449,7 @@ module.exports.copyFile = function copyFile(src, dest) {
       return resolve(dest);
     });
   });
-}
+};
 
 
 /***/ }),
@@ -49605,7 +49605,6 @@ const pug = __nccwpck_require__(316);
 const { getInput } = __nccwpck_require__(2186);
 const { parseData, copyFile } = __nccwpck_require__(1608);
 
-const root = path.resolve(__dirname, '..');
 const paths = {
   src: path.resolve(__dirname, '../', 'src'),
   build: process.env.GITHUB_WORKSPACE
@@ -49618,7 +49617,7 @@ if (!fs.existsSync(paths.build)) {
 }
 
 function getScreenshotPaths(report) {
-  let paths = [];
+  const screenshotPaths = [];
   report.fixtures.forEach((fixture) => {
     fixture.tests.forEach((test) => {
       if (test.screenshotPath) {
@@ -49627,7 +49626,7 @@ function getScreenshotPaths(report) {
     });
   });
 
-  return paths;
+  return screenshotPaths;
 }
 
 async function copyScreenshots(report) {
@@ -49668,11 +49667,7 @@ async function run() {
   await copyScreenshots(jsonReport);
 }
 
-try {
-  run();
-} catch (err) {
-  throw err;
-}
+run();
 
 })();
 
