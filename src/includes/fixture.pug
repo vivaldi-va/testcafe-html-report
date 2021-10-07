@@ -1,12 +1,12 @@
 article.fixture
   h3.collapse
-    button(type="button", aria-expanded="true")
+    button(type="button", aria-expanded=fixture.hasErrors ? "true" : "false")
       span.collapse-icon +
       span  #{fixture.name}
   div.fixture-tests
     each test in fixture.tests
       h4.collapse
-        button(type="button", aria-expanded="true")
+        button(type="button", aria-expanded=test.errs.length > 0 ? "true" : "false")
           span.collapse-icon +
           span  #{test.name}
       div(hidden=test.errs.length > 0 ? false : true)

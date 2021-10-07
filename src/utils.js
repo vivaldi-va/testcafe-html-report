@@ -10,6 +10,7 @@ module.exports.parseData = function parseData(data) {
     duration: humanizeDuration(duration, { round: true }),
     fixtures: data.fixtures.map((fixture) => ({
       ...fixture,
+      hasErrors: fixture.tests.some(t => t.errs.length > 0),
       tests: fixture.tests.map((test) => ({
         ...test,
         // modify screenshot path to point to workspace volume path

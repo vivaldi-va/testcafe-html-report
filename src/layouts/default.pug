@@ -22,6 +22,9 @@ html
           const target = heading.nextElementSibling
           const icon = heading.querySelector('.collapse-icon');
 
+          if (icon) {
+            icon.innerHTML = btn.getAttribute('aria-expanded') === 'true' ? '&minus;' : '+';
+          }
           target.hidden = btn.getAttribute('aria-expanded') === 'false';
 
           btn.onclick = () => {
