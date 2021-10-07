@@ -47,7 +47,7 @@
           ],
           "durationMs": 27131,
           "unstable": false,
-          "screenshotPath": "/test/screenshots/image.jpg",
+          "screenshotPath": "./test/screenshots/image.jpg",
           "skipped": false
         },
         {

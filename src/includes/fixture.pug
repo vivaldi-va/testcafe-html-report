@@ -16,5 +16,6 @@ article.fixture
               pre.test-error-stack
                 code #{err}
 
-              a(href=test.screenshotPath).test-screenshot-container
-                img.test-screenshot(src=test.screenshotPath, alt=test.name)
+              div.test-screenshot-container
+                a(href=test.screenshotPath)
+                  img.test-screenshot(src=test.screenshotPath, alt=test.name)
