@@ -5,6 +5,7 @@ article.fixture
       span  #{fixture.name}
     hr
     div.test-labels
+      span.label #{fixture.duration}
       span.label(class=fixture.hasErrors ? "error" : "success").
         #{fixture.hasErrors ? "failure" : "success"}
   div.fixture-tests

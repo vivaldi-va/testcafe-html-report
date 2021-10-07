@@ -10,6 +10,12 @@ module.exports.parseData = function parseData(data) {
     duration: humanizeDuration(duration, { round: true }),
     fixtures: data.fixtures.map((fixture) => ({
       ...fixture,
+      duration: humanizeDuration(
+        fixture.tests
+          .map(t => t.durationMs)
+          .reduce((acc, v) => acc + v, 0),
+        { round: true },
+      ),
       hasErrors: fixture.tests.some(t => t.errs.length > 0),
       tests: fixture.tests.map((test) => ({
         ...test,
