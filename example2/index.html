@@ -38,12 +38,14 @@
           </header>
           <h2>Features</h2>
           <article class="fixture">
-            <h3 class="collapse">
+            <h3 class="test-header collapse">
               <button type="button" aria-expanded="true"><span class="collapse-icon">+</span><span> Feature 1</span></button>
+              <hr><span class="label error">failure</span>
             </h3>
             <div class="fixture-tests">
-              <h4 class="collapse">
+              <h4 class="test-header collapse">
                 <button type="button" aria-expanded="true"><span class="collapse-icon">+</span><span> Scenario: Take control</span></button>
+                <hr><span class="label error">failure</span>
               </h4>
               <div>
                 <div class="test-error">
@@ -55,12 +57,14 @@
             </div>
           </article>
           <article class="fixture">
-            <h3 class="collapse">
+            <h3 class="test-header collapse">
               <button type="button" aria-expanded="true"><span class="collapse-icon">+</span><span> Feature 2</span></button>
+              <hr><span class="label error">failure</span>
             </h3>
             <div class="fixture-tests">
-              <h4 class="collapse">
+              <h4 class="test-header collapse">
                 <button type="button" aria-expanded="true"><span class="collapse-icon">+</span><span> test 1</span></button>
+                <hr><span class="label error">failure</span>
               </h4>
               <div>
                 <div class="test-error">
@@ -71,8 +75,29 @@
                   <div class="test-screenshot-container"><a href="./test/screenshots/image.jpg"><img class="test-screenshot" src="./test/screenshots/image.jpg" alt="test 1"></a></div>
                 </div>
               </div>
-              <h4 class="collapse">
-                <button type="button" aria-expanded="true"><span class="collapse-icon">+</span><span> test 2</span></button>
+              <h4 class="test-header collapse">
+                <button type="button" aria-expanded="false"><span class="collapse-icon">+</span><span> test 2</span></button>
+                <hr><span class="label success">success</span>
+              </h4>
+              <div hidden>
+              </div>
+            </div>
+          </article>
+          <article class="fixture">
+            <h3 class="test-header collapse">
+              <button type="button" aria-expanded="false"><span class="collapse-icon">+</span><span> Feature 3</span></button>
+              <hr><span class="label success">success</span>
+            </h3>
+            <div class="fixture-tests">
+              <h4 class="test-header collapse">
+                <button type="button" aria-expanded="false"><span class="collapse-icon">+</span><span> test 1</span></button>
+                <hr><span class="label success">success</span>
+              </h4>
+              <div hidden>
+              </div>
+              <h4 class="test-header collapse">
+                <button type="button" aria-expanded="false"><span class="collapse-icon">+</span><span> test 2</span></button>
+                <hr><span class="label success">success</span>
               </h4>
               <div hidden>
               </div>
@@ -92,6 +117,9 @@
           const target = heading.nextElementSibling
           const icon = heading.querySelector('.collapse-icon');
     
+          if (icon) {
+            icon.innerHTML = btn.getAttribute('aria-expanded') === 'true' ? '&minus;' : '+';
+          }
           target.hidden = btn.getAttribute('aria-expanded') === 'false';
     
           btn.onclick = () => {
