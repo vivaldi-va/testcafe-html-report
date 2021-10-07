@@ -4,7 +4,9 @@ article.fixture
       span.collapse-icon +
       span  #{fixture.name}
     hr
-    span.label(class=fixture.hasErrors ? "error" : "success") #{fixture.hasErrors ? "failure" : "success"}
+    div.test-labels
+      span.label(class=fixture.hasErrors ? "error" : "success").
+        #{fixture.hasErrors ? "failure" : "success"}
   div.fixture-tests
     each test in fixture.tests
       h4.test-header.collapse
@@ -12,7 +14,10 @@ article.fixture
           span.collapse-icon +
           span  #{test.name}
         hr
-        span.label(class=test.errs.length > 0 ? "error" : "success") #{test.errs.length > 0 ? "failure" : "success"}
+        div.test-labels
+          span.label #{test.duration}
+          span.label(class=test.errs.length > 0 ? "error" : "success").
+            #{test.errs.length > 0 ? "failure" : "success"}
       div(hidden=test.errs.length > 0 ? false : true)
         if test.errs.length > 0
           each err in test.errs
