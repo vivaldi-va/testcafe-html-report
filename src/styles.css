@@ -173,7 +173,7 @@ body {
   padding: 0.25em 0.5em;
   font-size: 1.4rem;
   font-weight: 600;
-  color: var(--gb-lm-bg0);
+  color: var(--bg0);
   background-color: var(--fg1);
   border-radius: 4px;
   white-space: nowrap;
