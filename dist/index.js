@@ -49621,7 +49621,7 @@ function getScreenshotPaths(report) {
   report.fixtures.forEach((fixture) => {
     fixture.tests.forEach((test) => {
       if (test.screenshotPath) {
-        paths.push(test.screenshotPath);
+        screenshotPaths.push(test.screenshotPath);
       }
     });
   });
