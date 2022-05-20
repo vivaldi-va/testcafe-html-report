@@ -6,12 +6,14 @@ Uses JSON report output from [Testcafe](https://github.com/DevExpress/testcafe) 
 
 ## Usage
 
+**Github Actions:**
+
 ```yaml
 
     # some_action.yml
 
     - name: Build HTML report
-      uses: vivaldi-va/testcafe-html-report@master
+      uses: vivaldi-va/testcafe-html-report@v1
       with:
         json_report: example/report.json
 ```
