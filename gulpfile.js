@@ -3,6 +3,7 @@ const path = require('path');
 const del = require('del');
 const { argv } = require('yargs');
 const log = require('fancy-log');
+const chalk = require('chalk');
 const gulp = require('gulp');
 const pug = require('gulp-pug');
 const browserSync = require('browser-sync').create();
@@ -17,7 +18,7 @@ const paths = {
 const { series } = gulp;
 
 function handleError(err) {
-  log.error(err.toString());
+  log.error(chalk.red(err.toString()));
   this.emit('end');
 }
 
@@ -44,6 +45,9 @@ function copyStyles() {
 
 function compilePug() {
   const dataPath = argv.file || paths.data;
+  if (!dataPath) {
+    return Promise.reject(new Error(chalk.red('test data is required, use "--file path/to/data.json" supply it')));
+  }
   const data = fs.readFileSync(dataPath);
   return gulp.src(path.join(paths.src, 'templates/**/*.pug'))
     .pipe(pug({
