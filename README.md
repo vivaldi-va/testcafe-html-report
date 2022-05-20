@@ -6,7 +6,31 @@ Uses JSON report output from [Testcafe](https://github.com/DevExpress/testcafe) 
 
 ## Usage
 
-**Github Actions:**
+1. Install [TestCafe JSON reporter](https://www.npmjs.com/package/testcafe-reporter-json)
+
+`npm i --save-dev testcafe-reporter-json`
+
+`yarn add -D testcafe-reporter-json`
+
+
+2. add json reporter to your testcafe config
+
+```json
+  {
+    // ...
+    "reporter": [
+      {
+        "name": "list"
+      },
+      {
+        "name": "json",
+        "output": "path/to/report.json"
+      }
+    ],
+    // ...
+  }
+```
+3. add report generation to action yaml
 
 ```yaml
 
@@ -15,7 +39,7 @@ Uses JSON report output from [Testcafe](https://github.com/DevExpress/testcafe) 
     - name: Build HTML report
       uses: vivaldi-va/testcafe-html-report@v1
       with:
-        json_report: example/report.json
+        json_report: path/to/report.json
 ```
 
 ## Development
