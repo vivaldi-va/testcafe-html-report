@@ -1,3 +1,5 @@
+[![Build report](https://github.com/vivaldi-va/testcafe-html-report/actions/workflows/runaction.yml/badge.svg)](https://github.com/vivaldi-va/testcafe-html-report/actions/workflows/runaction.yml)
+
 ## Testcafe HTML report action
 
 Uses JSON report output from [Testcafe](https://github.com/DevExpress/testcafe) to build an HTML report, to be deployed via some kind of CI at your discretion.
