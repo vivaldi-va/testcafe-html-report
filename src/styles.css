@@ -257,7 +257,17 @@ body {
 }
 
 .fixture-tests {
+  position: relative;
   margin-left: 1em;
+}
+
+.fixture-tests::before {
+  content: '';
+  position: absolute;
+  top: -2em;
+  left: -0.75em;
+  height: calc(100% + 4em);
+  border-left: 1px dotted var(--bg3);
 }
 
 .test-header {
