@@ -15,7 +15,14 @@ html
   script.
     (function() {
       window.addEventListener('DOMContentLoaded', (event) => {
-        const headings = document.querySelectorAll('.collapse')
+        const headings = document.querySelectorAll('.collapse');
+        const timestamps = document.querySelectorAll('.timestamp');
+
+        timestamps.forEach((stamp) => {
+          const stampRaw = stamp.innerHTML;
+          const stampFormatted = new Date(stampRaw).toLocaleString();
+          stamp.innerHTML = stampFormatted;
+        });
 
         Array.prototype.forEach.call(headings, heading => {
           const btn = heading.querySelector('button')

@@ -1,6 +1,12 @@
 header
-  p Test Start: #{new Date(startTime).toLocaleString()}
-  p Test End: #{new Date(endTime).toLocaleString()}
+  p
+    |Test Start:
+    |
+    span.timestamp #{startTime}
+  p
+    | Test End:
+    |
+    span.timestamp #{endTime}
   p Duration: #{duration}
   h3 Breakdown
   div.breakdown.table
