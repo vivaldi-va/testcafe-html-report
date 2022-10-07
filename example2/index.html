@@ -16,8 +16,14 @@
         <div class="wrapper">
           <h2>Test results</h2>
           <header>
-            <p>Test Start: 9/30/2021, 10:26:29 AM</p>
-            <p>Test End: 9/30/2021, 10:27:24 AM</p>
+            <p>
+              Test Start:
+              <span class="timestamp">2021-09-30T10:26:29.420Z</span>
+            </p>
+            <p>
+              Test End:
+              <span class="timestamp">2021-09-30T10:27:24.428Z</span>
+            </p>
             <p>Duration: 55 seconds</p>
             <h3>Breakdown</h3>
             <div class="breakdown table">
@@ -121,7 +127,14 @@
   <script>
     (function() {
       window.addEventListener('DOMContentLoaded', (event) => {
-        const headings = document.querySelectorAll('.collapse')
+        const headings = document.querySelectorAll('.collapse');
+        const timestamps = document.querySelectorAll('.timestamp');
+    
+        timestamps.forEach((stamp) => {
+          const stampRaw = stamp.innerHTML;
+          const stampFormatted = new Date(stampRaw).toLocaleString();
+          stamp.innerHTML = stampFormatted;
+        });
     
         Array.prototype.forEach.call(headings, heading => {
           const btn = heading.querySelector('button')
