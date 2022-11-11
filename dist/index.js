@@ -49425,17 +49425,15 @@ module.exports.parseData = function parseData(data) {
         // modify screenshot path to point to workspace volume path
         // https://github.community/t/how-can-i-access-the-current-repo-context-and-files-from-a-docker-container-action/17711/2
         duration: humanizeDuration(test.durationMs, { round: true }),
-        screenshots: test.screenshots && test.screenshots.map((screenshot) => {
-          return {
-            ...screenshot,
-            screenshotPath: screenshot.screenshotPath
-              .replace(workspace, '')
-              .replace(/^\//, './'),
-            thumbnailPath: screenshot.thumbnailPath
-              .replace(workspace, '')
-              .replace(/^\//, './'),
-          }
-        }),
+        screenshots: test.screenshots && test.screenshots.map((screenshot) => ({
+          ...screenshot,
+          screenshotPath: screenshot.screenshotPath
+            .replace(workspace, '')
+            .replace(/^\//, './'),
+          thumbnailPath: screenshot.thumbnailPath
+            .replace(workspace, '')
+            .replace(/^\//, './'),
+        })),
         screenshotPath: test.screenshotPath && test.screenshotPath
           .replace(workspace, '')
           .replace(/^\//, './'),
@@ -49628,11 +49626,20 @@ if (!fs.existsSync(paths.build)) {
 }
 
 function getScreenshotPaths(report) {
-  const screenshotPaths = [];
+  let screenshotPaths = [];
   report.fixtures.forEach((fixture) => {
     fixture.tests.forEach((test) => {
-      if (test.screenshotPath) {
-        screenshotPaths.push(test.screenshotPath);
+      if (test.screenshots) {
+        const fixturePaths = test.screenshots.reduce((acc, screenshot) => ([
+          ...acc,
+          screenshot.screenshotPath,
+          screenshot.thumbnailPath,
+        ]), []);
+
+        screenshotPaths = [
+          ...screenshotPaths,
+          ...fixturePaths,
+        ];
       }
     });
   });
@@ -49649,6 +49656,7 @@ async function copyScreenshots(report) {
     return copyFile(screenshotPath, path.join(paths.build, dest));
   }));
 }
+
 async function copyAssets() {
   return new Promise((resolve, reject) => {
     fs.copyFile(path.join(paths.src, 'styles.css'), path.join(paths.build, 'styles.css'), (err) => {

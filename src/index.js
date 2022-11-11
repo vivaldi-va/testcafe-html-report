@@ -16,11 +16,20 @@ if (!fs.existsSync(paths.build)) {
 }
 
 function getScreenshotPaths(report) {
-  const screenshotPaths = [];
+  let screenshotPaths = [];
   report.fixtures.forEach((fixture) => {
     fixture.tests.forEach((test) => {
-      if (test.screenshotPath) {
-        screenshotPaths.push(test.screenshotPath);
+      if (test.screenshots) {
+        const fixturePaths = test.screenshots.reduce((acc, screenshot) => ([
+          ...acc,
+          screenshot.screenshotPath,
+          screenshot.thumbnailPath,
+        ]), []);
+
+        screenshotPaths = [
+          ...screenshotPaths,
+          ...fixturePaths,
+        ];
       }
     });
   });
@@ -37,6 +46,7 @@ async function copyScreenshots(report) {
     return copyFile(screenshotPath, path.join(paths.build, dest));
   }));
 }
+
 async function copyAssets() {
   return new Promise((resolve, reject) => {
     fs.copyFile(path.join(paths.src, 'styles.css'), path.join(paths.build, 'styles.css'), (err) => {
