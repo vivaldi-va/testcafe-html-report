@@ -326,10 +326,21 @@ body {
 }
 
 .test-screenshot-container {
-  max-width: 300px;
   flex-basis: 300px;
   flex-grow: 1;
   flex-shrink: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  column-gap: 0.5em;
+}
+
+@media screen and (min-width: 762px) {
+  .test-screenshot-container {
+    max-width: 300px;
+    grid-template-columns: none;
+    grid-template-rows: repeat(auto-fit, 300px);
+    row-gap: 0.5em;
+  }
 }
 
 .test-screenshot {
