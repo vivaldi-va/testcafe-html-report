@@ -27,5 +27,6 @@ article.fixture
                 code #{err}
 
               div.test-screenshot-container
-                a(href=test.screenshotPath)
-                  img.test-screenshot(src=test.screenshotPath, alt=test.name)
+                each screenshot in test.screenshots
+                  a(href=screenshot.screenshotPath)
+                    img.test-screenshot(src=screenshot.thumbnailPath, alt=`${test.name} ${screenshot.quarantineAttempt ? 'attempt ' + screenshot.quarantineAttempt : ''}` title=`${test.name} ${screenshot.quarantineAttempt ? 'attempt ' + screenshot.quarantineAttempt : ''}`)

@@ -25,17 +25,26 @@
           ],
           "durationMs": 27843,
           "unstable": false,
-          "screenshotPath": "./test/screenshots/image.jpg",
+          "screenshotPath": "./test/screenshots/",
           "screenshots": [
             {
               "testRunId": "foo",
               "screenshotPath": "./test/screenshots/run-1/foo/bar/image.jpg",
               "thumbnailPath": "./test/screenshots/run-1/foo/bar/thumbnails/image.jpg",
               "userAgent": "Chrome_109.0.0.0_Linux_0.0",
-              "quarantineAttempt": false,
+              "quarantineAttempt": 1,
+              "takenOnFail": true
+            },
+            {
+              "testRunId": "bar",
+              "screenshotPath": "./test/screenshots/run-1/foo/bar/image.jpg",
+              "thumbnailPath": "./test/screenshots/run-1/foo/bar/thumbnails/image.jpg",
+              "userAgent": "Chrome_109.0.0.0_Linux_0.0",
+              "quarantineAttempt": 2,
               "takenOnFail": true
             }
           ],
+          "videos": [],
           "skipped": false
         }
       ]
@@ -57,14 +66,22 @@
           ],
           "durationMs": 27131,
           "unstable": false,
-          "screenshotPath": "./test/screenshots/image.jpg",
+          "screenshotPath": "./test/screenshots/",
           "screenshots": [
             {
               "testRunId": "foo",
               "screenshotPath": "./test/screenshots/run-1/foo/bar/image.jpg",
               "thumbnailPath": "./test/screenshots/run-1/foo/bar/thumbnails/image.jpg",
               "userAgent": "Chrome_109.0.0.0_Linux_0.0",
-              "quarantineAttempt": false,
+              "quarantineAttempt": 1,
+              "takenOnFail": true
+            },
+            {
+              "testRunId": "bar",
+              "screenshotPath": "./test/screenshots/run-1/foo/bar/image.jpg",
+              "thumbnailPath": "./test/screenshots/run-1/foo/bar/thumbnails/image.jpg",
+              "userAgent": "Chrome_109.0.0.0_Linux_0.0",
+              "quarantineAttempt": 2,
               "takenOnFail": true
             }
           ],

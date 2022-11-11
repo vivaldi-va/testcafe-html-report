@@ -22,6 +22,15 @@ module.exports.parseData = function parseData(data) {
         // modify screenshot path to point to workspace volume path
         // https://github.community/t/how-can-i-access-the-current-repo-context-and-files-from-a-docker-container-action/17711/2
         duration: humanizeDuration(test.durationMs, { round: true }),
+        screenshots: test.screenshots && test.screenshots.map((screenshot) => ({
+          ...screenshot,
+          screenshotPath: screenshot.screenshotPath
+            .replace(workspace, '')
+            .replace(/^\//, './'),
+          thumbnailPath: screenshot.thumbnailPath
+            .replace(workspace, '')
+            .replace(/^\//, './'),
+        })),
         screenshotPath: test.screenshotPath && test.screenshotPath
           .replace(workspace, '')
           .replace(/^\//, './'),
