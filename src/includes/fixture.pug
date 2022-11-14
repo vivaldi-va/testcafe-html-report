@@ -29,4 +29,7 @@ article.fixture
               div.test-screenshot-container
                 each screenshot in test.screenshots
                   a(href=screenshot.screenshotPath)
-                    img.test-screenshot(src=screenshot.thumbnailPath, alt=`${test.name} ${screenshot.quarantineAttempt ? 'attempt ' + screenshot.quarantineAttempt : ''}` title=`${test.name} ${screenshot.quarantineAttempt ? 'attempt ' + screenshot.quarantineAttempt : ''}`)
+                    img.test-screenshot(
+                      src=screenshot.screenshotPath,
+                      alt=`${test.name} ${screenshot.quarantineAttempt ? 'attempt ' + screenshot.quarantineAttempt : ''}` title=`${test.name} ${screenshot.quarantineAttempt ? 'attempt ' + screenshot.quarantineAttempt : ''}`
+                    )
