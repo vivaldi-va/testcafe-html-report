@@ -47,12 +47,11 @@ module.exports.copyFile = function copyFile(src, dest) {
   }
 
   return new Promise((resolve, reject) => {
-    fs.copyFileSync(src, dest, (err) => {
-      if (err) {
-        return reject(err);
-      }
-
+    try {
+      fs.copyFileSync(src, dest);
       return resolve(dest);
-    });
+    } catch (err) {
+      return reject(err);
+    }
   });
 };
